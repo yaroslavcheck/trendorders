@@ -53,3 +53,8 @@ class TempInvoices(models.Model):
 
     def __str__(self):
         return self.user
+
+
+class Referral(models.Model):
+    inviter = models.ForeignKey(User, on_delete=models.CASCADE)
+

@@ -5,6 +5,8 @@ import requests
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 
 from piramid.forms import LoginForm, UserRegistrationForm, DepositForm
 from piramid.models import Products, User, Invoices
@@ -242,3 +244,18 @@ def deposit(request):
         form = DepositForm()
 
     return render(request, 'account/deposit.html', {'form': form})
+
+
+@csrf_exempt
+@require_http_methods(['POST'])
+def cryptocloud_webhook(request):
+    status = request.form.get('status')
+    invoice_id = request.form.get('invoice_id')
+    amount_crypto = request.form.get('amount_crypto')
+    currency = request.form.get('currency')
+    order_id = request.form.get('order_id')
+    token = request.form.get('token')
+
+    print(status)
+
+    return ({'message': 'Postback received'}), 200

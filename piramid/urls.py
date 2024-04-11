@@ -14,6 +14,7 @@ urlpatterns = [
     path('earn/<int:pk>', views.earn_func, name='earn_func'),
     path('stats/', views.stats, name='stats'),
     path('ref_code/', views.ref_code, name='ref_code'),
-    path('deposit/', views.deposit, name='deposit')
+    path('deposit/', views.deposit, name='deposit'),
+    path('callback/', views.cryptocloud_webhook, name='callback')
     # path('success_reg/', views.success_reg, name='success')
 ]
