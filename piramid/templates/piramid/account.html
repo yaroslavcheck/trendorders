@@ -66,8 +66,10 @@
     <main>
         <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
             <div class="my-3 py-3">
-              <h2 class="display-5">{{data.first_name}}</h2>
-              <p class="lead">Вы с нами с {{data.reg_date}}. <br>За это время вы заработали {{data.profit}}$.</p>
+                <h2 class="display-5">{{data.first_name}}</h2>
+                <p class="lead">Вы с нами с {{data.reg_date}}. <br>За это время вы заработали {{data.profit|floatformat:2}}$.
+                    <br>Баланс: {{data.balance|floatformat:2}}$
+                </p>
             </div>
             <div class="shadow-sm mx-auto"
                  style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;

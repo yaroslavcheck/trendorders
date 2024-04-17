@@ -4,7 +4,7 @@ from django.template.defaultfilters import stringfilter, floatformat
 register = template.Library()
 
 
-@register.simple_tag
-@stringfilter
-def round_float(s: float):
+@register.filter
+@floatformat
+def round_float(s):
     return round(s, 2)

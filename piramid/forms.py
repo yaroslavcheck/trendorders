@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.models import User
-from piramid.models import TempInvoices
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -51,7 +50,7 @@ class UserRegistrationForm(forms.ModelForm):
         cd = self.cleaned_data
         if User.objects.filter(email=cd.get('email')).exists():
             raise forms.ValidationError('Email is taken.')
-        return cd
+        return cd.get('email')
 
 
 class LoginForm(forms.Form):

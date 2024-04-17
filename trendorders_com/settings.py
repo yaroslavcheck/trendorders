@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+from sshtunnel import SSHTunnelForwarder
+import MySQLdb
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +28,7 @@ SECRET_KEY = 'django-insecure-@sk8is5%_q)el)!onh(u_@z0j#!=)vz^vgqnx8p5q_z-cy%cn-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['trendorders.mysql.pythonanywhere-services.com']
 """
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
@@ -93,7 +96,7 @@ WSGI_APPLICATION = 'trendorders_com.wsgi.application'
     }
 }"""
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'piramid',
@@ -101,7 +104,36 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': 'localhost',
     }
+}"""
+
+
+"""ssh_tunnel = SSHTunnelForwarder(
+    ('ssh.pythonanywhere.com'),
+    ssh_password="Ab$01ute8Er7am0T",
+    ssh_username='trendorders',
+    remote_bind_address=('trendorders.mysql.pythonanywhere-services.com', 3306),
+)
+ssh_tunnel.start()"""
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'trendorders$piramid',
+        'USER': 'trendorders',
+        'PASSWORD': 'Ab$01ute',
+        'HOST': 'trendorders.mysql.pythonanywhere-services.com',
+        'PORT': 3306
+    },
 }
+"""'shhtunnel_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'trendorders.mysql.pythonanywhere-services.com',
+        'PORT': ssh_tunnel.local_bind_port,
+        'NAME': 'trendorders$piramid',
+        'USER': 'trendorders',
+        'PASSWORD': 'Ab$01ute',
+    },"""
 
 
 # Password validation

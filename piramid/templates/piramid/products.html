@@ -69,8 +69,8 @@
           <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
               <h1 class="fw-light">Заработок</h1>
-              <p class="lead text-muted">Заработок: {{ user_data.data_user.profit }}$</p>
-              <p class="lead text-muted">Баланс: {{ user_data.data_user.balance }}$</p>
+              <p class="lead text-muted">Заработок: {{ user_data.profit|floatformat:2 }}$</p>
+              <p class="lead text-muted">Баланс: {{ user_data.data_user.balance|floatformat:2 }}$</p>
             </div>
           </div>
         </section>
@@ -82,7 +82,7 @@
           <div class="container">
       
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                {% if user_data.data_user.active_product == 0 %}
+                {% if user_data.active_product == 0 %}
                 {% for product in data %}
               <div class="col">
                 <div class="card shadow-sm">
